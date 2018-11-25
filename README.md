@@ -10,23 +10,153 @@ Built with MT5 gateway API, DevCartelGateway64 accepts connection from MT5 platf
 * *Trading server* should be an IP address and port of a [PyMT5](https://github.com/devcartel/pymt5) server application <br /><br /><img width="584" alt="Launching gateway" src="https://user-images.githubusercontent.com/3415706/39416673-04c8d3aa-4c79-11e8-903a-a3121e864f65.png"><br /><br />
 * Click OK and the gateway will establish connection to your PyMT5 application
 
+## Gateway Network Protocol
+TCP socket.
+
 ## Message Format
-Message is composed of `Header+Body+<LF>` where each field in `Body` is demilited using ASCII SOH (`\x01`). Each message is ended with ASCII LF (`\x0A`) e.g.:
+Message is composed of `Header+Body+<LF>` where each field in `Body` is demilited using ASCII SOH (`\x01`) and must be prefixed by the `Header`. Each message is ended with ASCII LF (`\x0A`), for example:
 
-* `key1=value1<SOH>key2=value2<SOH>...<SOH>keyN=valueN<LF>`
+```python
+ver=3<SOH>type=3<SOH>tag1=value1<SOH>tag2=value2<SOH>...<SOH>tagN=valueN<LF>
+```
 
-In this documentation, pipe character (`|`) represents the delimiter ASCII SOH.
+In this documentation, light vertical bar character (`❘`) represents the delimiter ASCII SOH.
 
-Message type    | Header                          | Body
-----------------|---------------------------------|------
-Login           | <code>ver=3&#124;type=1</code>  | `login`,`password`,`res`
-Logout          | <code>ver=3&#124;type=2</code>  | _None_
-Symbol          | <code>ver=3&#124;type=3</code>  | `index`,`symbol`,`path`,`description`,`page`,`currency_base`,<br />`currency_profit`,`currency_margin`,`digits`,`tick_flags`,<br />`calc_mode`,`exec_mode`,`chart_mode`,`fill_flags`,<br />`expir_flags`,`tick_value`,`tick_size`,`contract_size`,<br />`volume_min`,`volume_max`,`volume_step`,`market_depth`,<br />`margin_flags`,`margin_initial`,`margin_maintenance`,<br />`margin_long`,`margin_short`,`margin_limit`,`margin_stop`,<br />`margin_stop_limit`,`settlement_price`,`price_limit_max`,<br />`price_limit_min`,`time_start`,`time_expiration`,`trade_mode`
-Tick            | <code>ver=3&#124;type=4</code>  | `symbol`,`bank`,`bid`,`ask`,`last`,`volume`,`datetime`
-Order           | <code>ver=3&#124;type=5</code>  | `symbol`,`bank`,`bid`,`ask`,`last`,`volume`,`datetime`,<br />`order_action`,`state`,`order`,`exchange_id`,`custom_data`,<br />`request_id`,`symbol`,`login`,`type_order`,`type_time`,<br />`action`,`price_order`,`price_sl`,`price_tp`,`price_tick_bid`,<br />`price_tick_ask`,`volume`,`expiration_time`,`result`
-Heartbeat       | <code>ver=3&#124;type=6</code>  | _None_
-Deal            | <code>ver=3&#124;type=8</code>  | `exchange_id`,`order`,`symbol`,`login`,`type_deal`,`volume`,<br />`volume_rem`,`price`
-External Deal   | <code>ver=3&#124;type=50</code> | `exchange_id`,`order`,`symbol`,`login`,`type_deal`,`volume`,<br />`volume_rem`,`price`,`datetime`
+## Message Type
+### Login
+| Tag        | Comments                 |
+| ---------- | ------------------------ |
+| _Header_   | `ver=3❘type=1`           |
+| `login`    |                          |
+| `password` |                          |
+| `res`      | `0` - ok<br/>`2` - error |
+
+
+
+### Logout
+| Tag             | Comments       |
+| --------------- | -------------- |
+| _Header_        | `ver=3❘type=2` |
+| _Body_          | _None_         |
+
+
+### Symbol
+| Tag                  | Comments                                                                                                                                                                     |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _Header_             | `ver=3❘type=3`                                                                                                                                                               |
+| `index`              | Symbol index                                                                                                                                                                 |
+| `symbol`             |                                                                                                                                                                              |
+| `path`               |                                                                                                                                                                              |
+| `description`        |                                                                                                                                                                              |
+| `page`               |                                                                                                                                                                              |
+| `currency_base`      |                                                                                                                                                                              |
+| `currency_profit`    |                                                                                                                                                                              |
+| `currency_margin`    |                                                                                                                                                                              |
+| `digits`             |                                                                                                                                                                              |
+| `tick_flags`         |                                                                                                                                                                              |
+| `calc_mode`          |                                                                                                                                                                              |
+| `exec_mode`          |                                                                                                                                                                              |
+| `chart_mode`         |                                                                                                                                                                              |
+| `fill_flags`         |                                                                                                                                                                              |
+| `expir_flags`        |                                                                                                                                                                              |
+| `tick_value`         |                                                                                                                                                                              |
+| `tick_size`          |                                                                                                                                                                              |
+| `contract_size`      |                                                                                                                                                                              |
+| `volume_min`         |                                                                                                                                                                              |
+| `volume_max`         |                                                                                                                                                                              |
+| `volume_step`        |                                                                                                                                                                              |
+| `market_depth`       |                                                                                                                                                                              |
+| `margin_flags`       |                                                                                                                                                                              |
+| `margin_initial`     |                                                                                                                                                                              |
+| `margin_maintenance` |                                                                                                                                                                              |
+| `margin_long`        |                                                                                                                                                                              |
+| `margin_short`       |                                                                                                                                                                              |
+| `margin_limit`       |                                                                                                                                                                              |
+| `margin_stop`        |                                                                                                                                                                              |
+| `margin_stop_limit`  |                                                                                                                                                                              |
+| `settlement_price`   |                                                                                                                                                                              |
+| `price_limit_max`    |                                                                                                                                                                              |
+| `price_limit_min`    |                                                                                                                                                                              |
+| `time_start`         | Trading start date                                                                                                                                                           |
+| `time_expiration`    | Trading expiration date                                                                                                                                                      |
+| `trade_mode`         | `0` - trade disabled<br/>`1` - only long positions allowed<br/>`2` - only short positions allowed<br/>`3` - only position closure<br/>`4` - all trade operations are allowed |
+
+### Tick
+| Tag        | Comments                             |
+| ---------- | ------------------------------------ |
+| _Header_   | `ver=3❘type=4`                       |
+| `symbol`   |                                      |
+| `bank`     |                                      |
+| `bid`      |                                      |
+| `ask`      |                                      |
+| `last`     |                                      |
+| `volume`   |                                      |
+| `datetime` | POSIX timestamp e.g. `1523278796000` |
+
+### Order
+| Tag               | Comments                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _Header_          | `ver=3❘type=5`                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `symbol`          |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `bank`            |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `bid`             |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `ask`             |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `last`            |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `volume`          |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `datetime`        | POSIX timestamp e.g. `1523278796000`                                                                                                                                                                                                                                                                                                                                                                                  |
+| `order_action`    | `1` - new<br/>`2` - modify<br/>`3` - cancel                                                                                                                                                                                                                                                                                                                                                                           |
+| `state`           | `0` - unkonwn<br/>`1` - confirmed<br/>`2` - placed<br/>`3` - new<br/>`4` - rejected<br/>`5` - deal<br/>`6` - modification received<br/>`7` - modified<br/>`8` - modification rejected<br/>`9` - cancelation received<br/>`10` - canceled<br/>`11` - cancelation rejected<br/>`20` - complete                                                                                                                  |
+| `order`           | MT order ticket                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `exchange_id`     | Exchange order ID                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `custom_data`     |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `request_id`      |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `symbol`          |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `login`           | MT client login                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `type_order`      | `0` - buy market<br/>`1` - sell<br/>`2` - buy limit<br/>`3` - sell limit<br/>`4` - buy stop<br/>`5` - sell stop<br/>`6` - buy stop limit<br/>`7` - sell stop limit                                                                                                                                                                                                                                                    |
+| `type_time`       | `0` - good till cancel<br/>`1` - good till day<br/>`2` - good till specified<br/>`3` - good till specified day                                                                                                                                                                                                                                                                                                        |
+| `action`          | Client action:<br/>`0` - prices for<br/>`1` - request<br/>`2` - instant<br/>`3` - market<br/>`4` - exchange<br/>`5` - pending<br/>`6` - stop loss/taking profit<br/>`7` - modify<br/>`8` - cancel<br/>`100` - activate<br/>`101` - activate stop loss<br/>`102` - activate take profit<br/>`103` - activate stop-limit order<br/>`104` - delete stop-out order<br/>`105` - close stop-out position<br/>`106` - expire |
+| `price_order`     |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `price_sl`        | Stop Loss level                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `price_tp`        | Take Profit level                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `price_tick_bid`  | Symbol bid price in external trading system                                                                                                                                                                                                                                                                                                                                                                           |
+| `price_tick_ask`  | Symbol ask price in external trading system                                                                                                                                                                                                                                                                                                                                                                           |
+| `volume`          |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `expiration_time` |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `result`          | Result of order processing:<br/>`1` - ok<br/>`10006` - rejected<br/>`10007` - canceled<br/>`10008` - placed<br/>`10009` - complete<br/>                                                                                                                                                                                                                                                                                                                                                                                              |
+
+### Heartbeat
+| Tag      | Comments       |
+| -------- | -------------- |
+| _Header_ | `ver=3❘type=6` |
+| _Body_   | _None_         |
+
+### Deal
+| Tag           | Comments                 |
+| ------------- | ------------------------ |
+| _Header_      | `ver=3❘type=8`           |
+| `exchange_id` | Exchange order ID        |
+| `order`       | Order exchange ticket    |
+| `symbol`      |                          |
+| `login`       | MT client's login        |
+| `type_deal`   | `0` - buy<br/>`1` - sell |
+| `volume`      | Deal volume              |
+| `volume_rem`  | Non-filled volume        |
+| `price`       | Lot price                |
+| `datetime`    | Deal timestamp           |
+
+### External Deal
+| Tag           | Comments                 |
+| ------------- | ------------------------ |
+| _Header_      | `ver=3❘type=50`          |
+| `exchange_id` | Exchange order ID        |
+| `order`       | Order exchange ticket    |
+| `symbol`      |                          |
+| `login`       | MT client's login        |
+| `type_deal`   | `0` - buy<br/>`1` - sell |
+| `volume`      | Deal volume              |
+| `volume_rem`  | Non-filled volume        |
+| `price`       | Lot price                |
+| `datetime`    | Deal timestamp           |
 
 ## Support
 * Report an issue [here](https://github.com/devcartel/devcartelgateway64/issues)
