@@ -24,9 +24,10 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 
 ## Message Type
 ### Login
-| Tag<img width=200/> | Comments<img width=500/> |
+| Tag<img width=200/> | Comments<img width=520/> |
 | ------------------- | ------------------------ |
 | _Header_            | `ver=3❘type=1`           |
+| _Body_              |                          |
 | `login`             |                          |
 | `password`          |                          |
 | `res`               | `0` - ok<br/>`2` - error |
@@ -40,9 +41,10 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 
 
 ### Symbol
-| Tag<img width=200/>  | Comments<img width=500/>                                                                                                                                                     |
+| Tag<img width=200/>  | Comments<img width=520/>                                                                                                                                                     |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | _Header_             | `ver=3❘type=3`                                                                                                                                                               |
+| _Body_               |                                                                                                                                                                              |
 | `index`              | Symbol index                                                                                                                                                                 |
 | `symbol`             |                                                                                                                                                                              |
 | `path`               |                                                                                                                                                                              |
@@ -81,9 +83,10 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `trade_mode`         | `0` - trade disabled<br/>`1` - only long positions allowed<br/>`2` - only short positions allowed<br/>`3` - only position closure<br/>`4` - all trade operations are allowed |
 
 ### Tick
-| Tag<img width=200/> | Comments<img width=500/>             |
+| Tag<img width=200/> | Comments<img width=520/>             |
 | ------------------- | ------------------------------------ |
 | _Header_            | `ver=3❘type=4`                       |
+| _Body_              |                                      |
 | `symbol`            |                                      |
 | `bank`              |                                      |
 | `bid`               |                                      |
@@ -92,10 +95,12 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `volume`            |                                      |
 | `datetime`          | POSIX timestamp e.g. `1523278796000` |
 
+
 ### Order
-| Tag<img width=200/> | Comments<img width=500/>                                                                                                                                                                                                                                                                                                                                                                                              |
+| Tag<img width=200/> | Comments<img width=520/>                                                                                                                                                                                                                                                                                                                                                                                              |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | _Header_            | `ver=3❘type=5`                                                                                                                                                                                                                                                                                                                                                                                                        |
+| _Body_              |                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `symbol`            |                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `bank`              |                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `bid`               |                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -124,15 +129,16 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `result`            | Result of order processing:<br/>`1` - ok<br/>`10006` - rejected<br/>`10007` - canceled<br/>`10008` - placed<br/>`10009` - complete<br/>                                                                                                                                                                                                                                                                               |
 
 ### Heartbeat
-| Tag<img width=200/> | Comments<img width=500/> |
+| Tag<img width=200/> | Comments<img width=520/> |
 | ------------------- | ------------------------ |
 | _Header_            | `ver=3❘type=6`           |
 | _Body_              | _None_                   |
 
 ### Deal
-| Tag<img width=200/> | Comments<img width=500/> |
+| Tag<img width=200/> | Comments<img width=520/> |
 | ------------------- | ------------------------ |
 | _Header_            | `ver=3❘type=8`           |
+| _Body_              |                          |
 | `exchange_id`       | Exchange order ID        |
 | `order`             | Order exchange ticket    |
 | `symbol`            |                          |
@@ -144,9 +150,10 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `datetime`          | Deal timestamp           |
 
 ### External Deal
-| Tag<img width=200/> | Comments<img width=500/> |
+| Tag<img width=200/> | Comments<img width=520/> |
 | ------------------- | ------------------------ |
 | _Header_            | `ver=3❘type=50`          |
+| _Body_              |                          |
 | `exchange_id`       | Exchange order ID        |
 | `order`             | Order exchange ticket    |
 | `symbol`            |                          |
