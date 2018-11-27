@@ -33,7 +33,7 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `res`               | `0` - ok<br/>`2` - error |
 
 ### Logout
-| Tag<img width=200/> | Comments<img width=500/> |
+| Tag<img width=200/> | Comments<img width=520/> |
 | ------------------- | ------------------------ |
 | _Header_            | `ver=3❘type=2`           |
 | _Body_              | _None_                   |
