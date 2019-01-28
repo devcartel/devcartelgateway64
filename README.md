@@ -1,6 +1,10 @@
 # DevCartelGateway64
 Built with MT5 gateway API, DevCartelGateway64 accepts connection from MT5 platform and connects to a remote PyMT5 application. It accepts various data types from PyMT5. For complete protocol and documentation, visit [PyMT5 GitHub](https://github.com/devcartel/pymt5).
 
+<p align="center">
+    <img src="http://media.virbcdn.com/cdn_images/resize_1024x1365/5b/ac5a58aa5703cc1b-ScreenShot2018-09-08at103035.png" alt="application" width="800"/>
+</p>
+
 ## Installation
 * Download a gateway package from our [releases](https://github.com/devcartel/devcartelgateway64/releases)
 * Unzip the package and put the whole folder in MT5 platform's gateway directory e.g. `D:\MetaTrader 5 Platform\History\Gateway`
