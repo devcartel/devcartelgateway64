@@ -3,6 +3,7 @@
 ![platform](https://img.shields.io/badge/platform-win-lightgray.svg)
 [![GitHub](https://img.shields.io/github/license/devcartel/devcartelgateway64.svg)](https://github.com/devcartel/devcartelgateway64/blob/master/LICENSE.txt)
 [![downloads](https://img.shields.io/github/downloads/devcartel/devcartelgateway64/total.svg)](https://github.com/devcartel/devcartelgateway64/releases)
+[![Sponsor](https://img.shields.io/badge/Sponsor%20DevCartelGateway64-%2419.99%2Fmonth-orange.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VDC722HFJ55VL)
 
 Built with MT5 gateway API, DevCartelGateway64 accepts connection from MT5 platform and connects to a remote PyMT5 application. It accepts various data types from PyMT5. For complete protocol and documentation, visit [PyMT5 GitHub](https://github.com/devcartel/pymt5).
 
