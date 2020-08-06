@@ -173,11 +173,16 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `volume_rem`        | Non-filled volume        |
 | `price`             | Lot price                |
 | `datetime`          | Deal timestamp           |
+| `comment`           |                          |
 
 ## Support
 * Report an issue [here](https://github.com/devcartel/devcartelgateway64/issues)
 
 ## Changelog
+1.2.0
+* 6 August 2020
+* Supports comment field in external deal
+
 1.1.0
 * 26 April 2018
 * Supports external deal DatetimeMsc
