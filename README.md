@@ -3,7 +3,7 @@
 ![platform](https://img.shields.io/badge/platform-win-lightgray.svg)
 [![GitHub](https://img.shields.io/github/license/devcartel/devcartelgateway64.svg)](https://github.com/devcartel/devcartelgateway64/blob/master/LICENSE.txt)
 [![downloads](https://img.shields.io/github/downloads/devcartel/devcartelgateway64/total.svg)](https://github.com/devcartel/devcartelgateway64/releases)
-[![Sponsor](https://img.shields.io/badge/Sponsor%20DevCartelGateway64-%2419.99%2Fmonth-orange.svg?style=social&logo=paypal)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VDC722HFJ55VL)
+[![Enterprise Support](https://img.shields.io/badge/DevCartelGateway64%20Enterprise%20Support-%24249%2Fmonth-orange.svg?style=social&logo=paypal)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EKWFY7M7APA5E)
 
 Built with MT5 gateway API, DevCartelGateway64 accepts connection from MT5 platform and connects to a remote PyMT5 application. It accepts various data types from PyMT5. For complete protocol and documentation, visit [PyMT5 GitHub](https://github.com/devcartel/pymt5).
 
@@ -157,7 +157,9 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `volume`            | Deal volume              |
 | `volume_rem`        | Non-filled volume        |
 | `price`             | Lot price                |
+| _Optional_          |                          |
 | `datetime`          | Deal timestamp           |
+| `comment`           |                          |
 
 ### External Deal
 | Tag<img width=200/> | Comments<img width=520/> |
@@ -172,6 +174,7 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `volume`            | Deal volume              |
 | `volume_rem`        | Non-filled volume        |
 | `price`             | Lot price                |
+| _Optional_          |                          |
 | `datetime`          | Deal timestamp           |
 | `comment`           |                          |
 
@@ -179,6 +182,11 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 * Report an issue [here](https://github.com/devcartel/devcartelgateway64/issues)
 
 ## Changelog
+1.3.0
+* 22 January 2021
+* Make `datetime` in deal message optional
+* Make `comment` in deal message optional
+
 1.2.0
 * 6 August 2020
 * Supports comment field in external deal
