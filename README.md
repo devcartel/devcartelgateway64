@@ -160,6 +160,7 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | _Optional_          |                          |
 | `datetime`          | Deal timestamp           |
 | `comment`           |                          |
+| `position`          | Position ID              |
 
 ### External Deal
 | Tag<img width=200/> | Comments<img width=520/> |
