@@ -183,6 +183,10 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 * Report an issue [here](https://github.com/devcartel/devcartelgateway64/issues)
 
 ## Changelog
+1.4.0
+* 26 May 2021
+* Support decimal `volume`
+
 1.3.0
 * 22 January 2021
 * Make `datetime` in deal message optional
