@@ -183,6 +183,10 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 * Report an issue [here](https://github.com/devcartel/devcartelgateway64/issues)
 
 ## Changelog
+1.5.0
+* 28 May 2021
+* Support up to 8 decimal for `price_order`
+* 
 1.4.0
 * 26 May 2021
 * Support decimal `volume`
