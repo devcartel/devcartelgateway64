@@ -136,6 +136,7 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `price_tick_ask`    | Symbol ask price in external trading system                                                                                                                                                                                                                                                                                                                                                                           |
 | `volume`            |                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `expiration_time`   |                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `comment`           |String (32 char max)                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `result`            | Result of order processing:<br/>`1` - ok<br/>`10006` - rejected<br/>`10007` - canceled<br/>`10008` - placed<br/>`10009` - complete<br/>                                                                                                                                                                                                                                                                               |
 
 ### Heartbeat
@@ -159,7 +160,7 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `price`             | Lot price                |
 | _Optional_          |                          |
 | `datetime`          | Deal timestamp           |
-| `comment`           |                          |
+| `comment`           | String (32 char max)     |
 | `position`          | Position ID              |
 
 ### External Deal
@@ -177,16 +178,20 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `price`             | Lot price                |
 | _Optional_          |                          |
 | `datetime`          | Deal timestamp           |
-| `comment`           |                          |
+| `comment`           | String (32 char max)     |
 
 ## Support
 * Report an issue [here](https://github.com/devcartel/devcartelgateway64/issues)
 
 ## Changelog
+1.6.0
+* 1 June 2021
+* Support `comment` in order message
+
 1.5.0
 * 28 May 2021
 * Support up to 8 decimal for `price_order`
-* 
+
 1.4.0
 * 26 May 2021
 * Support decimal `volume`
