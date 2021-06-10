@@ -148,7 +148,7 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 ### Deal
 | Tag<img width=200/> | Comments<img width=520/> |
 | ------------------- | ------------------------ |
-| _Header_            | `ver=3❘type=8`           |
+| _Header_            | `ver=3❘type=7`           |
 | _Body_              |                          |
 | `exchange_id`       | Exchange order ID        |
 | `order`             | Order exchange ticket    |
