@@ -136,7 +136,9 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 | `price_tick_ask`    | Symbol ask price in external trading system                                                                                                                                                                                                                                                                                                                                                                           |
 | `volume`            |                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `expiration_time`   |                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `comment`           |String (32 char max)                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `comment`           | String (32 char max)                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `position`          | Position ID                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `flags`             | Trade action flags:<br/>`1` - position close<br/>`2` - at market price<br/>`3` - market close                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `result`            | Result of order processing:<br/>`1` - ok<br/>`10006` - rejected<br/>`10007` - canceled<br/>`10008` - placed<br/>`10009` - complete<br/>                                                                                                                                                                                                                                                                               |
 
 ### Heartbeat
@@ -184,6 +186,10 @@ In this documentation, light vertical bar character (`❘`) represents the delim
 * Report an issue [here](https://github.com/devcartel/devcartelgateway64/issues)
 
 ## Changelog
+1.7.0
+* 17 June 2021
+* Support `position`, `flags` in order message
+
 1.6.0
 * 1 June 2021
 * Support `comment` in order message
